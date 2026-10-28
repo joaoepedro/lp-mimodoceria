@@ -8,3 +8,6 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- All editable copy, prices, deadlines and WhatsApp messages live in src/config.ts; components read from it so content edits stay in one place.
+- All WhatsApp buttons go through useWhatsApp() (src/components/mimo/WhatsApp.tsx); an empty number shows a demo dialog instead of opening wa.me.
