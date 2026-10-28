@@ -222,10 +222,18 @@ function QuemFaz() {
     <section className="bg-pistache-medio py-20 md:py-24">
       <div className="container-mimo grid items-center gap-12 md:grid-cols-2">
         <div className="relative mx-auto w-full max-w-[440px]">
-          <div className="grid aspect-[4/5] place-items-center rounded-[220px_220px_32px_32px] border-2 border-dashed border-rosa-linha bg-rosa p-6 text-center text-rosa-texto">
-            [Foto da confeiteira no ateliê]
-          </div>
-          <div className="absolute -bottom-4 right-2 -rotate-3 rounded-2xl bg-cacau px-5 py-3 text-pistache sm:-right-4">
+          <img
+            src="/images/confeiteira-880.webp"
+            srcSet="/images/confeiteira-440.webp 440w, /images/confeiteira-880.webp 880w"
+            sizes="(min-width: 768px) 440px, 90vw"
+            width={880}
+            height={1100}
+            loading="lazy"
+            decoding="async"
+            alt="Confeiteira finalizando um cookie recheado no ateliê"
+            className="aspect-[4/5] w-full rounded-[220px_220px_32px_32px] bg-rosa object-cover"
+          />
+          <div className="absolute -bottom-4 left-2 rotate-3 rounded-2xl bg-cacau px-5 py-3 text-pistache ring-4 ring-pistache sm:-left-4">
             <p className="font-display text-[34px] font-extrabold leading-none tracking-[-0.03em]">{config.prova.festas}</p>
             <p className="text-sm text-creme-escuro">festas desde {marca.fundacao}</p>
           </div>
