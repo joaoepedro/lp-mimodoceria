@@ -109,8 +109,8 @@
 
 @layer base {
   * { border-color: var(--color-border); }
-  /* trava a largura da página: nada pode criar rolagem lateral (nem ao trocar o tamanho no inspecionar) */
-  html { scroll-behavior: smooth; scroll-padding-top: 80px; overflow-x: hidden; }
+  /* sem overflow no html/body: no Chrome do iPhone isso fazia o cabeçalho fixo cobrir o topo ao voltar a rolagem */
+  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     *, *::before, *::after { transition: none !important; animation: none !important; }
@@ -121,7 +121,6 @@
     font-family: var(--font-sans);
     font-size: 17px;
     line-height: 1.55;
-    overflow-x: clip; /* reforço para o Safari do iPhone; clip não quebra o cabeçalho fixo */
   }
   /* campo de data no iPhone: o Safari ignora width:100% e impõe largura mínima própria */
   input[type="date"] {
