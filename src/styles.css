@@ -156,7 +156,7 @@
   @media (hover: hover) and (pointer: fine) { &:hover { background: var(--cacau); color: var(--pistache); } }
 }
 @utility balcao { background: var(--cacau); box-shadow: inset 0 14px 0 var(--friso); }
-@utility pontilhado { border-bottom: 2px dotted var(--rosa-texto); }
+@utility pontilhado { border-bottom: 2px dotted #b98e98; }
 
 /* Docinho */
 .docinho {

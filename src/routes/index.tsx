@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import * as Accordion from "@radix-ui/react-accordion";
-import { MessageCircle, Plus } from "lucide-react";
+import { MapPin, MessageCircle, Plus } from "lucide-react";
 import { config } from "@/config";
 import { Docinho, Vitrine, type Sabor } from "@/components/mimo/Docinho";
 import { WhatsAppProvider, useWhatsApp } from "@/components/mimo/WhatsApp";
@@ -103,11 +103,12 @@ function Topo({ onEncomendar }: { onEncomendar: () => void }) {
         </span>
         <Vitrine sabores={vitrineTopo} tamanho="clamp(76px, 8vw, 112px)" />
         <div className="balcao px-6 pb-[30px] pt-10">
-          <ul className="flex flex-wrap justify-center gap-x-12 gap-y-2 text-center text-[15px] font-semibold text-pistache">
-            <li>Entrega em {marca.areaEntrega}</li>
-            <li>Retirada na {marca.bairroRetirada}</li>
-            <li>Brigadeiro gourmet a partir de {config.cardapio[0].preco} {config.cardapio[0].unidade}</li>
-          </ul>
+          <p className="mx-auto flex max-w-fit items-start justify-center gap-2 text-center text-[15px] font-semibold text-pistache sm:items-center">
+            <MapPin aria-hidden="true" size={18} className="mt-[3px] shrink-0 text-rosa-vivo sm:mt-0" />
+            <span>
+              Entrega em {marca.areaEntrega} · Retirada na {marca.bairroRetirada}
+            </span>
+          </p>
         </div>
       </div>
     </section>
@@ -122,9 +123,9 @@ function Ocasioes() {
   ];
   return (
     <section className="container-mimo py-20 md:py-24">
-      <div className="flex flex-wrap items-end justify-between gap-6">
+      <div className="grid gap-4 md:grid-cols-2 md:items-end md:gap-10">
         <h2 className="h2-mimo max-w-[16ch]">Tem doce certo para cada comemoração</h2>
-        <p className="max-w-[40ch] text-cacau-suave">Do casamento ao aniversário do pequeno, passando pelo presente da empresa.</p>
+        <p className="max-w-[40ch] text-cacau-suave md:justify-self-end">Do casamento ao aniversário do pequeno, passando pelo presente da empresa.</p>
       </div>
       <ul className="mt-10 border-t-2 border-cacau">
         {itens.map(([s, t, d], i) => (
@@ -150,7 +151,7 @@ function Cardapio() {
           <p className="sobretitulo text-rosa-texto">Cardápio</p>
           <h2 className="h2-mimo mt-3">Escolha seus doces</h2>
           <p className="mt-3 text-rosa-texto">Preços por cento, com mínimo de {pedido.minimoPorSabor} unidades por sabor. Forminhas e embalagem já inclusas.</p>
-          <div className="mt-6 grid max-w-[260px] grid-cols-3 gap-3">
+          <div className="mt-6 grid max-w-[200px] grid-cols-3 gap-2.5">
             {grade.map((s, i) => <Docinho key={i} sabor={s} className="aspect-square w-full" />)}
           </div>
           <button type="button" onClick={() => abrir(config.mensagens.cardapio)} className="btn-primario mt-8">Quero montar meu pedido</button>
@@ -159,9 +160,9 @@ function Cardapio() {
           <ul>
             {config.cardapio.map((item) => (
               <li key={item.nome} className="border-b border-dashed border-rosa-linha py-5 first:pt-0">
-                <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-3">
-                  <h3 className="font-display text-2xl font-bold">{item.nome}</h3>
-                  <span aria-hidden="true" className="pontilhado hidden flex-1 sm:block" />
+                <div className="flex flex-col gap-1 lg:flex-row lg:items-baseline lg:gap-3">
+                  <h3 className="font-display text-2xl font-bold lg:whitespace-nowrap">{item.nome}</h3>
+                  <span aria-hidden="true" className="pontilhado hidden flex-1 lg:block" />
                   <span className="text-[15px] text-rosa-texto">
                     a partir de <strong className="font-display text-2xl font-bold text-cacau">{item.preco}</strong> {item.unidade}
                   </span>
