@@ -8,7 +8,8 @@ export const getRouter = () => {
   const router = createRouter({
     routeTree,
     context: { queryClient },
-    scrollRestoration: true,
+    // landing de página única: não restaura rolagem (no Chrome do iPhone isso devolvia a página ~112px abaixo do topo)
+    scrollRestoration: false,
     defaultPreloadStaleTime: 0,
   });
 

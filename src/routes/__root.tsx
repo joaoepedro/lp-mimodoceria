@@ -100,6 +100,14 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="pt-BR">
       <head>
         <HeadContent />
+        {/* Chrome do iPhone (CriOS) perde a conta das barras de ferramentas e, ao atualizar, devolve a página
+            abaixo do topo. Nele, a página sempre abre no topo (ou na âncora do link, se houver). */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "if(/CriOS/.test(navigator.userAgent)&&'scrollRestoration' in history){history.scrollRestoration='manual';}",
+          }}
+        />
       </head>
       <body>
         {children}
