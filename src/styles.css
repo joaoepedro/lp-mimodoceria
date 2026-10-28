@@ -121,7 +121,27 @@
     font-family: var(--font-sans);
     font-size: 17px;
     line-height: 1.55;
+    overflow-x: clip; /* reforço para o Safari do iPhone; clip não quebra o cabeçalho fixo */
   }
+  /* campo de data no iPhone: o Safari ignora width:100% e impõe largura mínima própria */
+  input[type="date"] {
+    -webkit-appearance: none;
+    appearance: none;
+    display: block;
+    min-width: 0;
+    max-width: 100%;
+    position: relative;
+  }
+  /* ícone nativo do Chrome invisível e cobrindo o campo: tocar em qualquer ponto abre o calendário */
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    inset: 0;
+    width: auto;
+    height: auto;
+    opacity: 0;
+    cursor: pointer;
+  }
+  input[type="date"]::-webkit-date-and-time-value { text-align: left; margin: 0; }
   h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.03em; }
   :focus-visible { outline: 3px solid var(--dourado); outline-offset: 3px; }
 }

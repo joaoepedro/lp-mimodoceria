@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Minus, Plus } from "lucide-react";
+import { CalendarDays, Minus, Plus } from "lucide-react";
 import { config, type TipoEvento } from "@/config";
 import { calcular, fmt, limitarConvidados, mensagemCalculadora } from "@/lib/calculadora";
 import { useWhatsApp } from "./WhatsApp";
@@ -75,7 +75,10 @@ export function Calculadora() {
             </div>
             <div>
               <label htmlFor="data" className="mb-2 block text-sm font-semibold">Data do evento (opcional)</label>
-              <input id="data" type="date" value={data} onChange={(e) => setData(e.target.value)} className="h-12 w-full min-w-0 rounded-full bg-pistache px-5 text-cacau focus-visible:outline-[3px] focus-visible:outline-offset-[3px] focus-visible:outline-dourado focus-visible:outline-solid" />
+              <div className="relative w-full min-w-0">
+                <CalendarDays size={18} aria-hidden="true" className="pointer-events-none absolute left-5 top-1/2 z-10 -translate-y-1/2 text-cacau" />
+                <input id="data" type="date" value={data} onChange={(e) => setData(e.target.value)} className="h-12 w-full min-w-0 rounded-full bg-pistache pl-12 pr-5 leading-[48px] text-cacau focus-visible:outline-[3px] focus-visible:outline-offset-[3px] focus-visible:outline-dourado focus-visible:outline-solid" />
+              </div>
             </div>
           </div>
         </div>
