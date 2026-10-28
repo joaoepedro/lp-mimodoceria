@@ -109,7 +109,8 @@
 
 @layer base {
   * { border-color: var(--color-border); }
-  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+  /* trava a largura da página: nada pode criar rolagem lateral (nem ao trocar o tamanho no inspecionar) */
+  html { scroll-behavior: smooth; scroll-padding-top: 80px; overflow-x: hidden; }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     *, *::before, *::after { transition: none !important; animation: none !important; }
@@ -120,7 +121,6 @@
     font-family: var(--font-sans);
     font-size: 17px;
     line-height: 1.55;
-    overflow-x: hidden;
   }
   h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.03em; }
   :focus-visible { outline: 3px solid var(--dourado); outline-offset: 3px; }
@@ -128,9 +128,11 @@
 
 @utility container-mimo {
   width: 100%;
-  max-width: calc(1160px + 48px);
+  max-width: calc(1160px + 64px);
   margin-inline: auto;
-  padding-inline: 24px;
+  /* respiro lateral: 28px no celular, 32px a partir do tablet */
+  padding-inline: 28px;
+  @media (min-width: 640px) { padding-inline: 32px; }
 }
 @utility h1-mimo { font-size: clamp(40px, 5.2vw, 68px); line-height: 1; font-weight: 800; }
 @utility h2-mimo { font-size: clamp(30px, 3.4vw, 44px); line-height: 1.1; font-weight: 800; }

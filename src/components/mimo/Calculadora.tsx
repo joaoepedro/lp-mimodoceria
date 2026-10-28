@@ -22,7 +22,7 @@ export function Calculadora() {
 
   return (
     <section id="calculadora" className="bg-cacau py-20 text-pistache md:py-24">
-      <div className="container-mimo grid items-center gap-12 md:grid-cols-2">
+      <div className="container-mimo grid items-center gap-12 md:grid-cols-2 [&>*]:min-w-0">
         <div>
           <h2 className="h2-mimo">Quantos docinhos sua festa precisa?</h2>
           <p className="mt-3 text-creme-escuro">Conte quantos convidados você espera e a gente sugere a quantidade.</p>
@@ -46,10 +46,10 @@ export function Calculadora() {
             </div>
           </fieldset>
 
-          <div className="mt-6 grid gap-4 sm:grid-cols-2">
+          <div className="mt-6 grid max-w-[440px] gap-5 [&>*]:min-w-0">
             <div>
               <label htmlFor="convidados" className="mb-2 block text-sm font-semibold">Número de convidados</label>
-              <div className="flex h-12 items-center rounded-full bg-pistache text-cacau">
+              <div className="flex h-12 items-center rounded-full bg-pistache text-cacau focus-within:outline-[3px] focus-within:outline-offset-[3px] focus-within:outline-dourado focus-within:outline-solid">
                 <button type="button" aria-label="Diminuir convidados" onClick={() => definir(convidados - c.passo)} className="grid h-12 w-12 shrink-0 place-items-center rounded-full">
                   <Minus size={18} />
                 </button>
@@ -66,7 +66,7 @@ export function Calculadora() {
                     setConvidados(limitarConvidados(Number.isNaN(n) ? c.convidadosMinimo : n));
                   }}
                   onBlur={() => setTexto(String(convidados))}
-                  className="w-full min-w-0 bg-transparent text-center font-bold outline-none [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none"
+                  className="h-full w-full min-w-0 bg-transparent text-center font-bold outline-none [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none"
                 />
                 <button type="button" aria-label="Aumentar convidados" onClick={() => definir(convidados + c.passo)} className="grid h-12 w-12 shrink-0 place-items-center rounded-full">
                   <Plus size={18} />
@@ -75,12 +75,12 @@ export function Calculadora() {
             </div>
             <div>
               <label htmlFor="data" className="mb-2 block text-sm font-semibold">Data do evento (opcional)</label>
-              <input id="data" type="date" value={data} onChange={(e) => setData(e.target.value)} className="h-12 w-full rounded-full bg-pistache px-5 text-cacau" />
+              <input id="data" type="date" value={data} onChange={(e) => setData(e.target.value)} className="h-12 w-full min-w-0 rounded-full bg-pistache px-5 text-cacau focus-visible:outline-[3px] focus-visible:outline-offset-[3px] focus-visible:outline-dourado focus-visible:outline-solid" />
             </div>
           </div>
         </div>
 
-        <div aria-live="polite" className="rotate-[1.5deg] rounded-[32px] bg-rosa p-7 text-cacau md:p-9">
+        <div aria-live="polite" className="mx-2 rotate-[3deg] rounded-[32px] bg-rosa p-7 text-cacau md:mx-0 md:rotate-[1.5deg] md:p-9">
           <p className="sobretitulo text-rosa-texto">Nossa sugestão</p>
           <p className="mt-3">
             Para <strong>{fmt(r.convidados)} convidados</strong>, sugerimos

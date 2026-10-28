@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useState, type ReactNode } from "react";
+import { createContext, useCallback, useContext, useRef, useState, type ReactNode } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { config } from "@/config";
 
@@ -7,7 +7,10 @@ export const useWhatsApp = () => useContext(Ctx);
 
 export function WhatsAppProvider({ children }: { children: ReactNode }) {
   const [msg, setMsg] = useState<string | null>(null);
+  // Guarda o botão que abriu o aviso para devolver o foco a ele ao fechar (acessibilidade por teclado)
+  const origem = useRef<HTMLElement | null>(null);
   const abrirWhatsApp = useCallback((mensagem: string) => {
+    origem.current = document.activeElement as HTMLElement | null;
     const numero = config.contato.whatsapp;
     if (numero) {
       window.open(`https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`, "_blank", "noopener");
@@ -19,7 +22,12 @@ export function WhatsAppProvider({ children }: { children: ReactNode }) {
       <Dialog.Root open={msg !== null} onOpenChange={(o) => !o && setMsg(null)}>
         <Dialog.Portal>
           <Dialog.Overlay className="fixed inset-0 z-50 bg-cacau/60 data-[state=open]:animate-in data-[state=open]:fade-in-0" />
-          <Dialog.Content className="fixed left-1/2 top-1/2 z-50 w-[calc(100%-32px)] max-w-md -translate-x-1/2 -translate-y-1/2 rounded-[24px] bg-pistache p-7 text-cacau">
+          <Dialog.Content
+            onCloseAutoFocus={(e) => {
+              e.preventDefault();
+              origem.current?.focus();
+            }}
+            className="fixed left-1/2 top-1/2 z-50 w-[calc(100%-32px)] max-w-md -translate-x-1/2 -translate-y-1/2 rounded-[24px] bg-pistache p-7 text-cacau">
             <span className="inline-block rounded-full bg-rosa px-3 py-1 text-xs font-bold tracking-[0.15em] text-rosa-texto">
               MODO DEMONSTRAÇÃO
             </span>

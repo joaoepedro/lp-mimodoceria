@@ -35,3 +35,7 @@ dist-ssr
 /docs/
 /design/
 /lovable/
+/apresentacao/
+
+# O projeto usa bun.lock (Lovable). Rodando localmente com npm, não enviar o lock do npm
+package-lock.json

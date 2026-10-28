@@ -97,12 +97,12 @@ function Topo({ onEncomendar }: { onEncomendar: () => void }) {
           <a href="#cardapio" className="font-semibold underline underline-offset-4">Ver cardápio e preços</a>
         </div>
       </div>
-      <div className="relative mt-14">
+      <div className="relative mt-[88px] sm:mt-14">
         <span className="absolute right-[8%] top-[-46px] z-10 rotate-6 rounded-lg bg-framboesa px-3 py-1.5 text-sm font-bold text-branco">
           feitos à mão, um por um
         </span>
         <Vitrine sabores={vitrineTopo} tamanho="clamp(76px, 8vw, 112px)" />
-        <div className="balcao px-6 pb-[30px] pt-10">
+        <div className="balcao px-7 pb-[30px] pt-10">
           <p className="mx-auto flex max-w-fit items-start justify-center gap-2 text-center text-[15px] font-semibold text-pistache sm:items-center">
             <MapPin aria-hidden="true" size={18} className="mt-[3px] shrink-0 text-rosa-vivo sm:mt-0" />
             <span>
@@ -146,15 +146,15 @@ function Cardapio() {
   const grade: Sabor[] = ["tradicional", "pistache", "ninho", "maracuja", "trufa", "camafeu", "cafe", "limao", "tradicional"];
   return (
     <section id="cardapio" className="container-mimo">
-      <div className="grid gap-10 rounded-[36px] bg-rosa p-7 md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] md:p-12">
-        <div>
+      <div className="grid gap-10 rounded-[32px] bg-rosa p-6 sm:p-8 md:rounded-[36px] md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] md:p-12">
+        <div className="flex flex-col">
           <p className="sobretitulo text-rosa-texto">Cardápio</p>
           <h2 className="h2-mimo mt-3">Escolha seus doces</h2>
           <p className="mt-3 text-rosa-texto">Preços por cento, com mínimo de {pedido.minimoPorSabor} unidades por sabor. Forminhas e embalagem já inclusas.</p>
-          <div className="mt-6 grid max-w-[200px] grid-cols-3 gap-2.5">
+          <div className="mx-auto mt-8 grid w-full max-w-[250px] grid-cols-3 gap-3">
             {grade.map((s, i) => <Docinho key={i} sabor={s} className="aspect-square w-full" />)}
           </div>
-          <button type="button" onClick={() => abrir(config.mensagens.cardapio)} className="btn-primario mt-8">Quero montar meu pedido</button>
+          <button type="button" onClick={() => abrir(config.mensagens.cardapio)} className="btn-primario mt-8 self-center">Quero montar meu pedido</button>
         </div>
         <div>
           <ul>
@@ -261,8 +261,8 @@ function Depoimentos() {
         <p className="text-cacau-suave"><strong className="font-display text-[28px] font-bold text-cacau">{config.prova.nota}</strong> em {config.prova.avaliacoes} avaliações</p>
       </div>
       <div className="mt-10 grid gap-5 md:grid-cols-[3fr_2fr]">
-        <figure className="flex flex-col justify-between rounded-[32px] bg-cacau p-8 text-pistache md:p-10">
-          <span aria-hidden="true" className="font-display text-[80px] leading-none text-rosa-vivo">“</span>
+        <figure className="flex flex-col justify-center rounded-[32px] bg-cacau p-8 text-pistache md:p-10">
+          <span aria-hidden="true" className="block h-9 font-display text-[80px] leading-[0.85] text-rosa-vivo">“</span>
           <blockquote className="font-display text-[clamp(22px,2.4vw,30px)] font-semibold leading-tight tracking-[-0.02em]">
             Pedi 300 docinhos para o aniversário de 1 ano do Theo e não sobrou nenhum. Chegaram ao salão uma hora antes, tudo arrumadinho.
           </blockquote>
@@ -288,12 +288,12 @@ function Degustacao() {
   const abrir = useWhatsApp();
   return (
     <section className="container-mimo">
-      <div className="grid items-center gap-10 rounded-[36px] bg-rosa p-7 md:grid-cols-[3fr_2fr] md:p-12">
+      <div className="grid items-center gap-10 rounded-[32px] bg-rosa p-6 sm:p-8 md:rounded-[36px] md:grid-cols-[3fr_2fr] md:p-12">
         <div>
           <span className="inline-block rounded-full bg-cacau px-3 py-1.5 text-xs font-bold tracking-[0.12em] text-rosa">
             AGENDA DE CASAMENTOS ABERTA PARA {pedido.agendaCasamentos}
           </span>
-          <h2 className="h2-mimo mt-5">Vai casar? Prove antes de escolher</h2>
+          <h2 className="h2-mimo mt-7">Vai casar? Prove antes de escolher</h2>
           <p className="mt-4 text-rosa-texto">
             A caixa degustação traz {config.degustacao.sabores} sabores à sua escolha e chega na sua casa. Custa <strong className="text-cacau">{config.degustacao.preco}</strong>, e o valor é abatido do pedido do casamento.
           </p>
