@@ -183,7 +183,9 @@
 .s-cafe { --fa:#C99A3B; --fb:#DDB65E; --base:#8A5A3C; --escuro:#4A2A18; --top: radial-gradient(circle, #E8D2B8 .8px, transparent 1.3px) 0 0 / 6px 6px; }
 .vitrine .docinho { box-shadow: 0 12px 14px rgba(59, 31, 23, 0.22); }
 
-.timeline-linha::before {
+@utility timeline-linha {
+  &::before {
   content: ""; position: absolute; left: 12.5%; right: 12.5%; top: 31px;
   border-top: 3px dotted var(--framboesa);
+  }
 }
